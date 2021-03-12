@@ -30,13 +30,6 @@ Output:
 
 ------------------------------------------------------------------------------------------------------------
 
-Optional parameters:
-
-1. k-mer size. Default value is 4.
-2. cluster_type : For training the data, armadillo provides an option between gmm_diag() and gmm_full(). The former uses an efficient gmm_clustering where the co-variance matrix only consists of diagonal elements - making the clusters speherical in shape. Alternatively, the gmm_full() can be used. It uses a full covariance matrix and hence can be used to represent different cluster shapes at the cost of some increase in the running time. 
-
--------------------------------------------------------------------------------------------------------------
-
 Module 2
 
 Input:
