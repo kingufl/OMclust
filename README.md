@@ -50,9 +50,9 @@ Input:
 
 1. Rmap file in Valouev format
 2. Trained cluster centers
-3. m value 
+3. m value :  minimum number of co-clustered kmers required for overlap call
 
 Output:
 
-1. Related Rmap calls
+1. Rmap relations
 
