@@ -15,7 +15,13 @@ Requirements:
 
 -------------------------------------------------------------------------------------------------------------
 
-Currently we offer three modules of OMclust. Here is a high level description about the modules. Further details about how to run each module including bash scripts are included in the readme files inside the respective folders. 
+Build OMclust using the make command. The executables are created in the bin directory. Note that the armadillo library needs to be loaded before building OMclust. You may need to edit the makefile to point to where the armadillo libraries are installed on your system. 
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+Currently we offer three modules of OMclust. Here is a high level description of the modules. Further details about how to run each module including bash scripts are included in the readme files inside the respective folders. 
 
 **Module 1**
 
