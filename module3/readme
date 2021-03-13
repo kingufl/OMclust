@@ -1,0 +1,10 @@
+This module takes trained cluster centers and the m-value as input and produces Rmap relations as output. 
+This pipeline is suitable when training has already been completed on the genome of a species 
+and the pretrained cluster centers are used to cluster new data from the same species. 
+
+This pipeline is same as module 1, except that steps 2 and 3 are replaced by a classification step.
+The steps of this module are as follows.
+
+step 1: extract kmers. Run extractkmers.sh (edit the location of Rmap file)
+step 2: classify kmers to clusters. Run classify.sh (edit locations of kmer file and cluster centers)
+step 3: findrelations. Run findrelations.sh (edit locations of rmapfile, infofile, cluster_assignments and m-value)

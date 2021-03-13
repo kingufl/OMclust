@@ -1,0 +1,10 @@
+This module takes Rmap file and a range of num_clusters as input and produces trained cluster centers for each along with key statistics and runtimes 
+This pipeline is suitable when the number of clusters is unknown and needs to be assessed. 
+This module does not produce Rmap relations. The output of this module can be fed into module 3 to produce relations.
+
+The steps of this module are as follows.
+
+step 1: extract kmers. Run extractkmers.sh (edit the location of Rmap file)
+step 2: train and classify kmers to clusters. Run runclustering.sh (edit num_clusters and location of kmerfile)
+step 3: run silhouette analysis script. Run runsilhouette.sh
+step 4: prepare statistics and runtimes. Run makestats.sh

@@ -1,0 +1,9 @@
+This module takes Rmap file, number of clusters and m-value as input and produces trained cluster centers and Rmap relations as output. 
+This pipeline is suitable when the number of clusters are known.
+
+The steps of this module are as follows.
+
+step 1: extract kmers. Run extractkmers.sh (edit the location of Rmap file)
+step 2: train and classify kmers to clusters. Run runclustering.sh (edit num_clusters and location of kmerfile)
+step 3: extract cluster centers and cluster assignments from training output. Run extractclusters.sh (edit location of training_output_file)
+step 4: findrelations. Run findrelations.sh (edit locations of rmapfile, infofile, cluster_assignments and m-value)
