@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rmapfile='/blue/boucher/kingdgp/clustering/arma_cluster_ecoli/ecoli_cov300.val'
+rmapfile='./../ecoli_rmaps.val'
 infofile='kmerinfo.txt'
-clusterfile='ecoli2200.out.cluster_assignments'
+clusterfile='cluster_assignments'
 mvalue=6
 
-./../src/findrels $rmapfile $infofile $clusterfile $mvalue 
+./../bin/findrels.exe $rmapfile $infofile $clusterfile $mvalue 

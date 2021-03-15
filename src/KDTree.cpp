@@ -229,6 +229,93 @@ KDNodePtr KDTree::nearest_(   //
     return best_l;
 };
 
+// actual nearest caller
+
+KDNodePtr KDTree::nearest_nod2_(   //
+    const KDNodePtr &branch,  //
+    const point_t &pt,        //
+    const size_t &level,      //
+    const KDNodePtr &best,    //
+    const int &best_dist,
+    const point_t &pt2   //
+) {
+    int d, dx, dx2;
+
+    if (!bool(*branch)) {
+        return NewKDNodePtr();  // basically, null
+    }
+
+    point_t branch_pt(*branch);
+    size_t dim = branch_pt.size();
+
+    d = dist2(branch_pt, pt);
+    int d2 = dist2(branch_pt, pt2);
+
+    dx = branch_pt.at(level) - pt.at(level);
+    dx2 = dx * dx;
+
+    KDNodePtr best_l = best;
+    int best_dist_l = best_dist;
+
+    if (d < best_dist) {
+        best_dist_l = d;
+        best_l = branch;
+    }
+
+    size_t next_lv = (level + 1) % dim;
+    KDNodePtr section;
+    KDNodePtr other;
+
+    // select which branch makes sense to check
+    if (dx > 0) {
+        section = branch->left;
+        other = branch->right;
+    } else {
+        section = branch->right;
+        other = branch->left;
+    }
+
+    // keep nearest neighbor from further down the tree
+    KDNodePtr further = nearest_(section, pt, next_lv, best_l, best_dist_l,pt2);
+    if (!further->x.empty()) {
+        int dl = dist2(further->x, pt);
+        if (dl < best_dist_l) {
+            best_dist_l = dl;
+            best_l = further;
+        }
+    }
+    // only check the other branch if it makes sense to do so
+    if (dx2 < best_dist_l) {
+        further = nearest_(other, pt, next_lv, best_l, best_dist_l,pt2);
+        if (!further->x.empty()) {
+            int dl = dist2(further->x, pt);
+            if (dl < best_dist_l) {
+                best_dist_l = dl;
+                best_l = further;
+            }
+        }
+    }
+
+    return best_l;
+};
+
+
+
+// nearest caller end
+
+
+KDNodePtr KDTree::nearest_nod2_(const point_t &pt, const point_t &pt2) {
+    size_t level = 0;
+    // KDNodePtr best = branch;
+    int branch_dist = dist2(point_t(*root), pt);
+    return nearest_nod2_(root,          // beginning of tree
+                    pt,            // point we are querying
+                    level,         // start from level 0
+                    root,          // best is the root
+                    branch_dist,pt2);  // best_dist = branch_dist
+};
+
+
 // default caller
 KDNodePtr KDTree::nearest_(const point_t &pt, const point_t &pt2) {
     size_t level = 0;
@@ -246,6 +333,10 @@ point_t KDTree::nearest_point(const point_t &pt,const point_t &pt2) {
 };
 size_t KDTree::nearest_index(const point_t &pt,const point_t &pt2) {
     return size_t(*nearest_(pt,pt2));
+};
+
+size_t KDTree::nearest_index_nod2(const point_t &pt,const point_t &pt2) {
+    return size_t(*nearest_nod2_(pt,pt2));
 };
 
 pointIndex KDTree::nearest_pointIndex(const point_t &pt,const point_t &pt2) {

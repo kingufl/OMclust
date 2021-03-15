@@ -95,12 +95,24 @@ class KDTree {
         const point_t &pt2   //
     );
 
+    KDNodePtr nearest_nod2_(           //
+        const KDNodePtr &branch,  //
+        const point_t &pt,        //
+        const size_t &level,      //
+        const KDNodePtr &best,    //
+        const int &best_dist,
+        const point_t &pt2   //
+    );
+
     // default caller
     KDNodePtr nearest_(const point_t &pt,const point_t &pt2);
+    KDNodePtr nearest_nod2_(const point_t &pt,const point_t &pt2);
 
    public:
     point_t nearest_point(const point_t &pt,const point_t &pt2);
     size_t nearest_index(const point_t &pt,const point_t &pt2);
+    size_t nearest_index_nod2(const point_t &pt,const point_t &pt2);
+
     pointIndex nearest_pointIndex(const point_t &pt,const point_t &pt2);
 
    private:

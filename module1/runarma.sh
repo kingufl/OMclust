@@ -13,4 +13,4 @@ ml armadillo
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HPC_ARMADILLO_LIB
 export LD_LIBRARY_PATH
 
-/usr/bin/time -v /blue/boucher/kingdgp/clustering/chinese_human/OMclust/bin/clustering.exe $kmerfile $1
+/usr/bin/time -v ./../bin/clustering.exe $kmerfile $1

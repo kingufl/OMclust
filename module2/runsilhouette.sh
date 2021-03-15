@@ -1,7 +1,7 @@
 #!/bin/bash
 
 clustfile='num_clusters'
-kmerfile='/blue/boucher/kingdgp/clustering/chinese_human/OMclust/data/ecoli/all_4mers.txt'
+kmerfile='all_kmers.txt'
 
 while read line;
 do	
