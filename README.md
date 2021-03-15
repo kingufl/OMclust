@@ -21,7 +21,7 @@ Build OMclust using the make command. The executables are created in the bin dir
 
 
 
-Currently we offer three modules of OMclust. Here is a high level description of the modules. Further details about how to run each module including bash scripts are included in the readme files inside the respective folders. 
+Currently we offer three modules of OMclust. Here is a high level description of the modules. Further details about how to run each module including bash scripts are included in the readme files inside the respective folders.
 
 **Module 1**
 
